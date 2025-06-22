@@ -9,6 +9,11 @@
 
 require_once plugin_dir_path(__FILE__) . 'libs/dompdf/autoload.inc.php';
 
+// Ensure WordPress functions like esc_url are available
+if (! function_exists('esc_url')) {
+    require_once(ABSPATH . 'wp-includes/pluggable.php');
+}
+
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
@@ -25,19 +30,27 @@ function efpg_handle_pdf_generation(WP_REST_Request $request)
     $data = $request->get_params();
     $fields = $data['fields'];
 
+    $photo = '';
+    if (!empty($fields['photo']['value'])) {
+        // Always use value (URL) for the photo
+        $photo_url = $fields['photo']['value'];
+        // Validate and sanitize the URL
+        $photo = esc_url($photo_url);
+    }
+
     $name    = sanitize_text_field($fields['name']['value']);
     $email   = sanitize_email($fields['email']['value']);
     $address = sanitize_text_field($fields['address']['value']);
     $phone   = sanitize_text_field($fields['phone']['value']);
 
-    // Example HTML template
-    $html = "
-    <h2>User Info</h2>
-    <p><strong>Name:</strong> {$name}</p>
-    <p><strong>Email:</strong> {$email}</p>
-    <p><strong>Address:</strong> {$address}</p>
-    <p><strong>Phone:</strong> {$phone}</p>
-  ";
+
+    // Prepare template variables
+    $template_vars = compact('name', 'email', 'address', 'phone', 'photo');
+
+    // Start output buffering
+    ob_start();
+    include plugin_dir_path(__FILE__) . 'template-pdf.php';
+    $html = ob_get_clean();
 
     $options = new Options();
     $options->set('defaultFont', 'Helvetica');
