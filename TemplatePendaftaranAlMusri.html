@@ -2,7 +2,21 @@
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type" />
     <style type="text/css">
-      @import url(https://themes.googleusercontent.com/fonts/css?kit=fpjTOVmNbO4Lz34iLyptLUXza5VhXqVC6o75Eld_V98);
+      @font-face {
+        font-family: "Comic Sans MS";
+        src: url("fonts/comic-sans-ms.woff2") format("woff2"),
+          url("fonts/comic-sans-ms.woff2") format("woff");
+        font-weight: normal;
+        font-style: normal;
+      }
+      /* Add fallback for Comic Sans MS if available on system */
+      body,
+      p,
+      span,
+      td,
+      th {
+        font-family: "Comic Sans MS", "Comic Sans", cursive, sans-serif;
+      }
       ol {
         margin: 0;
         padding: 0;
@@ -902,7 +916,7 @@
           <p class="c25"><span class="c24">REGISTRATION FORM</span></p>
         </td>
         <td class="c16" colspan="1" rowspan="1">
-          <p class="c25"><span class="c4">&lt;&lt;Child Foto&gt;&gt;</span></p>
+          <p class="c25"><span class="c4">&lt;&lt;ChildFoto&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -918,7 +932,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c36" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Child&rsquo;s Full Name&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;ChildsFullName&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -929,7 +943,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c36" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Place, Date of Birth&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;ChildPlaceDateOfBirth&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -940,7 +954,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c36" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Child&rsquo;s Address&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;ChildAddress&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -951,7 +965,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c36" colspan="4" rowspan="1">
-          <p class="c1"><span class="c53">&lt;&lt;Interest or Hobby&gt;&gt;</span></p>
+          <p class="c1"><span class="c53">&lt;&lt;ChildInterestOrHobby&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -962,7 +976,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c13" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Age&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;ChildAge&gt;&gt;</span></p>
         </td>
         <td class="c12" colspan="1" rowspan="1">
           <p class="c1"><span class="c4">Gender</span></p>
@@ -971,7 +985,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c16" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Gender&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;ChildGender&gt;&gt;</span></p>
         </td>
       </tr>
     </table>
@@ -990,7 +1004,7 @@
           <p class="c3"><span class="c23">:</span></p>
         </td>
         <td class="c0" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Father&rsquo;s Full Name&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;FathersFullName&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1001,7 +1015,7 @@
           <p class="c3"><span class="c23">:</span></p>
         </td>
         <td class="c0" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Father&rsquo;s Address&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;FathersAddress&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1012,7 +1026,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c15" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Father&rsquo;s Employment&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;FathersEmployment&gt;&gt;</span></p>
         </td>
         <td class="c12" colspan="1" rowspan="1">
           <p class="c1"><span class="c4">Fathers Office Address</span></p>
@@ -1021,7 +1035,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c9" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Fathers Office Address&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;FathersOfficeAddress&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1033,7 +1047,7 @@
         </td>
         <td class="c15" colspan="1" rowspan="1">
           <p class="c1 c59">
-            <span class="c4">&lt;&lt;Father&rsquo;s Instagram Account&gt;&gt;</span>
+            <span class="c4">&lt;&lt;FathersInstagramAccount&gt;&gt;</span>
           </p>
         </td>
         <td class="c12" colspan="1" rowspan="1">
@@ -1043,7 +1057,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c9" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Fathers Phone Number&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;FathersPhoneNumber&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1065,7 +1079,7 @@
           <p class="c3"><span class="c23">:</span></p>
         </td>
         <td class="c0" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Mother&rsquo;s Full Name&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;MothersFullName&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1076,7 +1090,7 @@
           <p class="c3"><span class="c23">:</span></p>
         </td>
         <td class="c0" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Mother&rsquo;s Address&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;MothersAddress&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1087,7 +1101,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c15" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Mother&rsquo;s Employment&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;MothersEmployment&gt;&gt;</span></p>
         </td>
         <td class="c12" colspan="1" rowspan="1">
           <p class="c1"><span class="c4">Mother&rsquo;s Work Address</span></p>
@@ -1096,7 +1110,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c9" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Mother&rsquo;s Work Address&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;MothersWorkAddress&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1107,7 +1121,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c15" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Mother&rsquo;s Instagram Account&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;MothersInstagramAccount&gt;&gt;</span></p>
         </td>
         <td class="c12" colspan="1" rowspan="1">
           <p class="c1"><span class="c4">Mother&rsquo;s Phone Number</span></p>
@@ -1116,7 +1130,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c9" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Mother&rsquo;s Phone Number&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;MothersPhoneNumber&gt;&gt;</span></p>
         </td>
       </tr>
     </table>
@@ -1142,7 +1156,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c55" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Full Name&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;EmergencyFullName&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1153,7 +1167,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c55" colspan="4" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Address&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;EmergencyAddress&gt;&gt;</span></p>
         </td>
       </tr>
       <tr class="c11">
@@ -1164,7 +1178,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c29" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Relationship&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;EmergencyRelationship&gt;&gt;</span></p>
         </td>
         <td class="c18" colspan="1" rowspan="1">
           <p class="c1"><span class="c4">Phone Number</span></p>
@@ -1173,7 +1187,7 @@
           <p class="c3"><span class="c4">:</span></p>
         </td>
         <td class="c31" colspan="1" rowspan="1">
-          <p class="c1"><span class="c4">&lt;&lt;Phone Number&gt;&gt;</span></p>
+          <p class="c1"><span class="c4">&lt;&lt;EmergencyPhoneNumber&gt;&gt;</span></p>
         </td>
       </tr>
     </table>
@@ -1193,7 +1207,7 @@
         </td>
         <td class="c21" colspan="1" rowspan="1">
           <p class="c1">
-            <span class="c4">&lt;&lt;How did you know about this school ?&gt;&gt;</span>
+            <span class="c4">&lt;&lt;HowDidYouKnow&gt;&gt;</span>
           </p>
         </td>
       </tr>
@@ -1206,7 +1220,7 @@
         </td>
         <td class="c21" colspan="1" rowspan="1">
           <p class="c1">
-            <span class="c4">&lt;&lt;Why you choose KBTK Alifa Muslim Montessori ?&gt;&gt;</span>
+            <span class="c4">&lt;&lt;WhyYouChoose&gt;&gt;</span>
           </p>
         </td>
       </tr>
@@ -1219,7 +1233,7 @@
         </td>
         <td class="c21" colspan="1" rowspan="1">
           <p class="c1">
-            <span class="c4">&lt;&lt;Which branch do you sign up for ?&gt;&gt;</span>
+            <span class="c4">&lt;&lt;WhichBranch&gt;&gt;</span>
           </p>
         </td>
       </tr>
@@ -1232,7 +1246,7 @@
         </td>
         <td class="c21" colspan="1" rowspan="1">
           <p class="c1">
-            <span class="c4">&lt;&lt;What school program would you choose ?&gt;&gt;</span>
+            <span class="c4">&lt;&lt;WhatSchoolProgram&gt;&gt;</span>
           </p>
         </td>
       </tr>

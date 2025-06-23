@@ -1,0 +1,294 @@
+{
+  "email": {
+    "id": "email",
+    "type": "email",
+    "title": "Email",
+    "value": "jokoking626@gmail.com",
+    "raw_value": "jokoking626@gmail.com",
+    "required": "1"
+  },
+  "field_bb6f418": {
+    "id": "field_bb6f418",
+    "type": "html",
+    "title": "Student Information",
+    "value": "",
+    "raw_value": "",
+    "required": "0"
+  },
+  "child_name": {
+    "id": "child_name",
+    "type": "text",
+    "title": "Child's Full Name",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "child_address": {
+    "id": "child_address",
+    "type": "text",
+    "title": "Child's Address",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "child_gender": {
+    "id": "child_gender",
+    "type": "radio",
+    "title": "Gender",
+    "value": "Male",
+    "raw_value": "Male",
+    "required": "1"
+  },
+  "child_birth_place_date": {
+    "id": "child_birth_place_date",
+    "type": "textarea",
+    "title": "Place, Date of Birth",
+    "value": "blora, 12 feb 2024",
+    "raw_value": "blora, 12 feb 2024",
+    "required": "1"
+  },
+  "child_age": {
+    "id": "child_age",
+    "type": "number",
+    "title": "Age",
+    "value": "12",
+    "raw_value": "12",
+    "required": "1"
+  },
+  "child_hobby": {
+    "id": "child_hobby",
+    "type": "text",
+    "title": "Interest or Hobby",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "0"
+  },
+  "child_foto": {
+    "id": "child_foto",
+    "type": "upload",
+    "title": "Child's Photo",
+    "value": "http://localhost:10008/wp-content/uploads/elementor/forms/6858d175f2d16.png",
+    "raw_value": "/home/mint/Local Sites/alifamontessori/app/public/wp-content/uploads/elementor/forms/6858d175f2d16.png",
+    "required": "1",
+    "file_sizes": "",
+    "file_types": "jpg, jpeg, png, webp",
+    "max_files": "",
+    "attachment_type": "link"
+  },
+  "field_1d2355d": {
+    "id": "field_1d2355d",
+    "type": "html",
+    "title": "PARENT INFORMATION",
+    "value": "",
+    "raw_value": "",
+    "required": "0"
+  },
+  "field_277bce1": {
+    "id": "field_277bce1",
+    "type": "html",
+    "title": "1. Father",
+    "value": "",
+    "raw_value": "",
+    "required": "0"
+  },
+  "father_name": {
+    "id": "father_name",
+    "type": "text",
+    "title": "Father's Full Name",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "father_address": {
+    "id": "father_address",
+    "type": "text",
+    "title": "Father's Address",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "0"
+  },
+  "father_phone": {
+    "id": "father_phone",
+    "type": "tel",
+    "title": "Father's Phone Number",
+    "value": "3827438",
+    "raw_value": "3827438",
+    "required": "1"
+  },
+  "father_job": {
+    "id": "father_job",
+    "type": "text",
+    "title": "Father's Employment",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "father_office_address": {
+    "id": "father_office_address",
+    "type": "text",
+    "title": "Father's Work Address",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "father_instagram": {
+    "id": "father_instagram",
+    "type": "text",
+    "title": "Father's Instagram Account",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "0"
+  },
+  "field_a11f6b7": {
+    "id": "field_a11f6b7",
+    "type": "html",
+    "title": "2. Mother",
+    "value": "",
+    "raw_value": "",
+    "required": "0"
+  },
+  "mother_name": {
+    "id": "mother_name",
+    "type": "text",
+    "title": "Mother's Full Name",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "mother_address": {
+    "id": "mother_address",
+    "type": "text",
+    "title": "Mother's Address",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "mother_phone": {
+    "id": "mother_phone",
+    "type": "tel",
+    "title": "Mother's Phone Number",
+    "value": "889789",
+    "raw_value": "889789",
+    "required": "1"
+  },
+  "mother_job": {
+    "id": "mother_job",
+    "type": "text",
+    "title": "Mother's Employment",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "mother_office_address": {
+    "id": "mother_office_address",
+    "type": "text",
+    "title": "Mother's Work Address",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "mother_instagram": {
+    "id": "mother_instagram",
+    "type": "text",
+    "title": "Mother's Instagram Account",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "field_3273987": {
+    "id": "field_3273987",
+    "type": "html",
+    "title": "EMERGENCY INFORMATION",
+    "value": "",
+    "raw_value": "",
+    "required": "0"
+  },
+  "emergency_full_name": {
+    "id": "emergency_full_name",
+    "type": "text",
+    "title": "Full Name",
+    "value": "shfsjdfhskjdf",
+    "raw_value": "shfsjdfhskjdf",
+    "required": "1"
+  },
+  "emergency_address": {
+    "id": "emergency_address",
+    "type": "text",
+    "title": "Address",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "emergency_relationship": {
+    "id": "emergency_relationship",
+    "type": "text",
+    "title": "Relationship",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "emergency_phone": {
+    "id": "emergency_phone",
+    "type": "tel",
+    "title": "Phone Number",
+    "value": "678678",
+    "raw_value": "678678",
+    "required": "1"
+  },
+  "field_56722c8": {
+    "id": "field_56722c8",
+    "type": "html",
+    "title": "EMERGENCY INFORMATION",
+    "value": "",
+    "raw_value": "",
+    "required": "0"
+  },
+  "info_how": {
+    "id": "info_how",
+    "type": "text",
+    "title": "How did you know about this school ?",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "info_why": {
+    "id": "info_why",
+    "type": "text",
+    "title": "Why you choose KBTK Alifa Muslim Montessori ?",
+    "value": "sajdkasjds",
+    "raw_value": "sajdkasjds",
+    "required": "1"
+  },
+  "info_branch": {
+    "id": "info_branch",
+    "type": "radio",
+    "title": "Which branch do you sign up for ?",
+    "value": "GEDONGKUNING",
+    "raw_value": "GEDONGKUNING",
+    "required": "1"
+  },
+  "info_program": {
+    "id": "info_program",
+    "type": "radio",
+    "title": "What school program would you choose ?",
+    "value": "Fullday (07.00 - 18.00)",
+    "raw_value": "Fullday (07.00 - 18.00)",
+    "required": "0"
+  },
+  "field_db3b276": {
+    "id": "field_db3b276",
+    "type": "html",
+    "title": "EMERGENCY INFORMATION",
+    "value": "",
+    "raw_value": "",
+    "required": "0"
+  },
+  "field_03734ce": {
+    "id": "field_03734ce",
+    "type": "radio",
+    "title": "The parent/guardian of the participant listed above, so hereby and allow his/her participant in the above program and I agree to follow all the school’s rules for the sake of the children.",
+    "value": "Agree",
+    "raw_value": "Agree",
+    "required": "1"
+  }
+}

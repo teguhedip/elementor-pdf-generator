@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Plugin Name: Elementor Form PDF Generator
+ * Plugin Name: Elementor Form PDF Generator by Teguh Edi P
  * Description: Creates and emails a PDF after Elementor form submission.
  * Version: 1.0
- * Author: Your Name
+ * Author: Teguh Edi P
  */
 
 require_once plugin_dir_path(__FILE__) . 'libs/dompdf/autoload.inc.php';
@@ -44,13 +44,69 @@ function efpg_handle_pdf_generation(WP_REST_Request $request)
     $phone   = sanitize_text_field($fields['phone']['value']);
 
 
-    // Prepare template variables
-    $template_vars = compact('name', 'email', 'address', 'phone', 'photo');
+    // Load template file
+    $template = file_get_contents(plugin_dir_path(__FILE__) . 'TemplatePendaftaranAlMusri.html');
 
-    // Start output buffering
-    ob_start();
-    include plugin_dir_path(__FILE__) . 'template-pdf.php';
-    $html = ob_get_clean();
+    // Replace placeholders with form data
+    $html = str_replace([
+        '<<ChildFoto>>',
+        '<<ChildsFullName>>',
+        '<<ChildPlaceDateOfBirth>>',
+        '<<ChildAddress>>',
+        '<<ChildInterestOrHobby>>',
+        '<<ChildAge>>',
+        '<<ChildGender>>',
+        '<<FathersFullName>>',
+        '<<FathersAddress>>',
+        '<<FathersEmployment>>',
+        '<<FathersOfficeAddress>>',
+        '<<FathersInstagramAccount>>',
+        '<<FathersPhoneNumber>>',
+        '<<MothersFullName>>',
+        '<<MothersAddress>>',
+        '<<MothersEmployment>>',
+        '<<MothersWorkAddress>>',
+        '<<MothersInstagramAccount>>',
+        '<<MothersPhoneNumber>>',
+        '<<EmergencyFullName>>',
+        '<<EmergencyAddress>>',
+        '<<EmergencyRelationship>>',
+        '<<EmergencyPhoneNumber>>',
+        '<<HowDidYouKnow>>',
+        '<<WhyYouChoose>>',
+        '<<WhichBranch>>',
+        '<<WhatSchoolProgram>>'
+    ], [
+        $fields['child_foto']['value'],
+        $fields['child_name']['value'],
+        $fields['child_birth_place_date']['value'],
+        $fields['child_address']['value'],
+        $fields['child_hobby']['value'],
+        $fields['child_age']['value'],
+        $fields['child_gender']['value'],
+        $fields['father_name']['value'],
+        $fields['father_address']['value'],
+        $fields['father_job']['value'],
+        $fields['father_office_address']['value'],
+        $fields['father_instagram']['value'],
+        $fields['father_phone']['value'],
+        $fields['mother_name']['value'],
+        $fields['mother_address']['value'],
+        $fields['mother_job']['value'],
+        $fields['mother_office_address']['value'],
+        $fields['mother_instagram']['value'],
+        $fields['mother_phone']['value'],
+        $fields['emergency_full_name']['value'],
+        $fields['emergency_address']['value'],
+        $fields['emergency_relationship']['value'],
+        $fields['emergency_phone']['value'],
+        $fields['info_how']['value'],
+        $fields['info_why']['value'],
+        $fields['info_branch']['value'],
+        $fields['info_program']['value']
+    ], $template);
+
+    //create simple html here to show all data
 
     $options = new Options();
     $options->set('defaultFont', 'Helvetica');
