@@ -93,7 +93,7 @@
             /* Ensure logo doesn't overflow cell */
             object-fit: contain;
             /* Scale image to fit within bounds without cropping */
-            border: 1px solid #ddd;
+            /* border: 0px solid #ddd; */
             margin-right: 10px;
         }
 

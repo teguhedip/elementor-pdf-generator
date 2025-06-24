@@ -1,7 +1,4 @@
 <?php
-// file: elementor-pdf-generator.php
-// @intelephense disable
-// Plugin ini berjalan dalam lingkungan WordPress, semua fungsi dan konstanta tersedia
 
 /**
  * Plugin Name: Elementor Form PDF Generator by Teguh Edi P
@@ -10,17 +7,42 @@
  * Author: Teguh Edi P
  */
 
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+// Load WordPress core
+require_once(ABSPATH . 'wp-load.php');
+
 require_once plugin_dir_path(__FILE__) . 'libs/dompdf/autoload.inc.php';
 
-// Ensure WordPress functions like esc_url are available
-if (! function_exists('esc_url')) {
+// Ensure WordPress environment is loaded
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+// Load WordPress core functions
+if (!function_exists('esc_url')) {
     require_once(ABSPATH . 'wp-includes/pluggable.php');
+}
+
+if (!function_exists('sanitize_text_field')) {
+    require_once(ABSPATH . 'wp-includes/formatting.php');
+}
+
+if (
+    !function_exists('add_action') || !function_exists('register_rest_route') ||
+    !class_exists('WP_REST_Request') || !class_exists('WP_REST_Response')
+) {
+    require_once(ABSPATH . 'wp-includes/pluggable.php');
+    require_once(ABSPATH . 'wp-admin/includes/post.php');
+    require_once(ABSPATH . 'wp-includes/rest-api.php');
 }
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
-use WP_REST_Request;
-use WP_REST_Response;
+
 
 add_action('rest_api_init', function () {
     register_rest_route('custom/v1', '/generate-pdf/', [
@@ -37,7 +59,7 @@ function efpg_handle_pdf_generation(WP_REST_Request $request)
 
     // Define variables and sanitize data.
     // Ensure 'child_foto' field value is a valid URL for the image.
-    $child_foto_url = isset($fields['child_foto']['value']) ? esc_url($fields['child_foto']['value']) : '';
+    // $child_foto_url = isset($fields['child_foto']['value']) ? esc_url($fields['child_foto']['value']) : '';
 
     // Image URLs for logo and footer
     $image1 = plugins_url('images/image1.png', __FILE__);
@@ -55,33 +77,33 @@ function efpg_handle_pdf_generation(WP_REST_Request $request)
     // Prepare an array of placeholders and their corresponding values
     // Using an associative array for easier mapping and readability
     $replacements = [
-        '<<ChildFoto>>'             => $child_foto_url,
-        '<<ChildsFullName>>'        => isset($fields['child_name']['value']) ? sanitize_text_field($fields['child_name']['value']) : '',
-        '<<ChildPlaceDateOfBirth>>' => isset($fields['child_birth_place_date']['value']) ? sanitize_text_field($fields['child_birth_place_date']['value']) : '',
-        '<<ChildAddress>>'          => isset($fields['child_address']['value']) ? sanitize_text_field($fields['child_address']['value']) : '',
-        '<<ChildInterestOrHobby>>'  => isset($fields['child_hobby']['value']) ? sanitize_text_field($fields['child_hobby']['value']) : '',
-        '<<ChildAge>>'              => isset($fields['child_age']['value']) ? sanitize_text_field($fields['child_age']['value']) : '',
-        '<<ChildGender>>'           => isset($fields['child_gender']['value']) ? sanitize_text_field($fields['child_gender']['value']) : '',
-        '<<FathersFullName>>'       => isset($fields['father_name']['value']) ? sanitize_text_field($fields['father_name']['value']) : '',
-        '<<FathersAddress>>'        => isset($fields['father_address']['value']) ? sanitize_text_field($fields['father_address']['value']) : '',
-        '<<FathersEmployment>>'     => isset($fields['father_job']['value']) ? sanitize_text_field($fields['father_job']['value']) : '',
-        '<<FathersOfficeAddress>>'  => isset($fields['father_office_address']['value']) ? sanitize_text_field($fields['father_office_address']['value']) : '',
-        '<<FathersInstagramAccount>>' => isset($fields['father_instagram']['value']) ? sanitize_text_field($fields['father_instagram']['value']) : '',
-        '<<FathersPhoneNumber>>'    => isset($fields['father_phone']['value']) ? sanitize_text_field($fields['father_phone']['value']) : '',
-        '<<MothersFullName>>'       => isset($fields['mother_name']['value']) ? sanitize_text_field($fields['mother_name']['value']) : '',
-        '<<MothersAddress>>'        => isset($fields['mother_address']['value']) ? sanitize_text_field($fields['mother_address']['value']) : '',
-        '<<MothersEmployment>>'     => isset($fields['mother_job']['value']) ? sanitize_text_field($fields['mother_job']['value']) : '',
-        '<<MothersWorkAddress>>'    => isset($fields['mother_office_address']['value']) ? sanitize_text_field($fields['mother_office_address']['value']) : '',
-        '<<MothersInstagramAccount>>' => isset($fields['mother_instagram']['value']) ? sanitize_text_field($fields['mother_instagram']['value']) : '',
-        '<<MothersPhoneNumber>>'    => isset($fields['mother_phone']['value']) ? sanitize_text_field($fields['mother_phone']['value']) : '',
-        '<<EmergencyFullName>>'     => isset($fields['emergency_full_name']['value']) ? sanitize_text_field($fields['emergency_full_name']['value']) : '',
-        '<<EmergencyAddress>>'      => isset($fields['emergency_address']['value']) ? sanitize_text_field($fields['emergency_address']['value']) : '',
-        '<<EmergencyRelationship>>' => isset($fields['emergency_relationship']['value']) ? sanitize_text_field($fields['emergency_relationship']['value']) : '',
-        '<<EmergencyPhoneNumber>>'  => isset($fields['emergency_phone']['value']) ? sanitize_text_field($fields['emergency_phone']['value']) : '',
-        '<<HowDidYouKnow>>'         => isset($fields['info_how']['value']) ? sanitize_text_field($fields['info_how']['value']) : '',
-        '<<WhyYouChoose>>'          => isset($fields['info_why']['value']) ? sanitize_text_field($fields['info_why']['value']) : '',
-        '<<WhichBranch>>'           => isset($fields['info_branch']['value']) ? sanitize_text_field($fields['info_branch']['value']) : '',
-        '<<WhatSchoolProgram>>'     => isset($fields['info_program']['value']) ? sanitize_text_field($fields['info_program']['value']) : '',
+        '<<ChildFoto>>'             => $fields['child_foto']['value'],
+        '<<ChildsFullName>>'        => $fields['child_name']['value'],
+        '<<ChildPlaceDateOfBirth>>' => $fields['child_birth_place_date']['value'],
+        '<<ChildAddress>>'          => $fields['child_address']['value'],
+        '<<ChildInterestOrHobby>>'  => $fields['child_hobby']['value'],
+        '<<ChildAge>>'              => $fields['child_age']['value'],
+        '<<ChildGender>>'           => $fields['child_gender']['value'],
+        '<<FathersFullName>>'       => $fields['father_name']['value'],
+        '<<FathersAddress>>'        => $fields['father_address']['value'],
+        '<<FathersEmployment>>'     => $fields['father_job']['value'],
+        '<<FathersOfficeAddress>>'  => $fields['father_office_address']['value'],
+        '<<FathersInstagramAccount>>' => $fields['father_instagram']['value'],
+        '<<FathersPhoneNumber>>'    => $fields['father_phone']['value'],
+        '<<MothersFullName>>'       => $fields['mother_name']['value'],
+        '<<MothersAddress>>'        => $fields['mother_address']['value'],
+        '<<MothersEmployment>>'     => $fields['mother_job']['value'],
+        '<<MothersWorkAddress>>'    => $fields['mother_office_address']['value'],
+        '<<MothersInstagramAccount>>' => $fields['mother_instagram']['value'],
+        '<<MothersPhoneNumber>>'    => $fields['mother_phone']['value'],
+        '<<EmergencyFullName>>'     => $fields['emergency_full_name']['value'],
+        '<<EmergencyAddress>>'      => $fields['emergency_address']['value'],
+        '<<EmergencyRelationship>>' => $fields['emergency_relationship']['value'],
+        '<<EmergencyPhoneNumber>>'  => $fields['emergency_phone']['value'],
+        '<<HowDidYouKnow>>'         => $fields['info_how']['value'],
+        '<<WhyYouChoose>>'          => $fields['info_why']['value'],
+        '<<WhichBranch>>'           => $fields['info_branch']['value'],
+        '<<WhatSchoolProgram>>'     => $fields['info_program']['value'],
         '<<LogoUrl>>'               => $image1,
         '<<FooterImageUrl>>'        => $image2
     ];
@@ -135,7 +157,7 @@ function efpg_handle_pdf_generation(WP_REST_Request $request)
     wp_mail(get_option('admin_email'), $subject, $message, $headers, $attachments);
 
     // Send to user - ensure $email variable is correctly assigned
-    $user_email = isset($fields['email']['value']) ? sanitize_email($fields['email']['value']) : '';
+    $user_email = $fields['email']['value'];
     if (is_email($user_email)) { // Validate email before sending
         wp_mail($user_email, $subject, $message, $headers, $attachments);
     }
