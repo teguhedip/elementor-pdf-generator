@@ -1,4 +1,6 @@
 <?php
+// @intelephense disable
+// Plugin ini berjalan dalam lingkungan WordPress, semua fungsi dan konstanta tersedia
 
 /**
  * Plugin Name: Elementor Form PDF Generator by Teguh Edi P
@@ -16,6 +18,7 @@ if (! function_exists('esc_url')) {
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
+// use WP_REST_Response;
 
 add_action('rest_api_init', function () {
     register_rest_route('custom/v1', '/generate-pdf/', [
@@ -43,9 +46,17 @@ function efpg_handle_pdf_generation(WP_REST_Request $request)
     $address = sanitize_text_field($fields['address']['value']);
     $phone   = sanitize_text_field($fields['phone']['value']);
 
+    // $image1 = plugin_dir_path(__FILE__) . 'images/image1.png';
+    // $image2 = plugin_dir_path(__FILE__) . 'images/image2.png';
+    $image1 = plugins_url('images/image1.png', __FILE__);
+    $image2 = plugins_url('images/image2.png', __FILE__);
+
 
     // Load template file
-    $template = file_get_contents(plugin_dir_path(__FILE__) . 'TemplatePendaftaranAlMusri.html');
+    // $template = file_get_contents(plugin_dir_path(__FILE__) . 'template-pdf.php');
+    $template = file_get_contents(plugin_dir_path(__FILE__) . 'register-form2.php');
+    // $template = file_get_contents(plugin_dir_path(__FILE__) . 'TemplatePendaftaranAlMusri.php');
+    // $template = file_get_contents(plugin_dir_path(__FILE__) . 'template-pendaftaran .php');
 
     // Replace placeholders with form data
     $html = str_replace([
@@ -75,7 +86,9 @@ function efpg_handle_pdf_generation(WP_REST_Request $request)
         '<<HowDidYouKnow>>',
         '<<WhyYouChoose>>',
         '<<WhichBranch>>',
-        '<<WhatSchoolProgram>>'
+        '<<WhatSchoolProgram>>',
+        '<<LogoUrl>>',
+        '<<FooterImageUrl>>'
     ], [
         $fields['child_foto']['value'],
         $fields['child_name']['value'],
@@ -103,13 +116,15 @@ function efpg_handle_pdf_generation(WP_REST_Request $request)
         $fields['info_how']['value'],
         $fields['info_why']['value'],
         $fields['info_branch']['value'],
-        $fields['info_program']['value']
+        $fields['info_program']['value'],
+        $image1,
+        $image2
     ], $template);
 
-    //create simple html here to show all data
-
     $options = new Options();
-    $options->set('defaultFont', 'Helvetica');
+    $options->set('defaultFont', 'Comic Sans MS');
+    $options->set('isHtml5ParserEnabled', true); // Disarankan untuk HTML modern
+    $options->set('isRemoteEnabled', true);     // <<< INI YANG PENTING UNTUK GAMBAR DARI URL
     $dompdf = new Dompdf($options);
     $dompdf->loadHtml($html);
     $dompdf->setPaper('A4', 'portrait');
